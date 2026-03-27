@@ -1,0 +1,334 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background: #e8e8e8;
+  color: #111;
+}
+header { background: #333; color: #fff; }
+nav ul { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; }
+nav li { margin: 0 1rem; }
+nav a { color: #fff; text-decoration: none; padding: 1rem 0; display: block; }
+nav a:hover { text-decoration: underline; }
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tag-grid span {
+  background: #007bff;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsivo: em telas maiores, usa grid com 2 colunas */
+@media (min-width: 1024px) {
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Telas muito largas: até 3 colunas */
+@media (min-width: 1400px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-card {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.project-badge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 0.75rem 0;
+}
+
+/* Card GitHub Original Grande */
+.github-preview {
+  margin: 0.75rem 0;
+}
+
+.github-card-full {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.github-card-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.github-og-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.github-card-full h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #0366d6;
+  font-weight: 600;
+}
+
+.github-card-full p {
+  margin: 0 0 0.75rem 0;
+  color: #586069;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.github-langs-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lang-badge-full {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f3f3f3;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Modal para README */
+.readme-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.readme-modal-content {
+  background: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.readme-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  z-index: 1001;
+}
+
+.readme-modal-close:hover {
+  color: #333;
+}
+
+.readme-modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e1e4e8;
+  background: #f6f8fa;
+}
+
+.readme-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0366d6;
+}
+
+.readme-modal-body {
+  padding: 2rem;
+  color: #24292e;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.readme-modal-body h1,
+.readme-modal-body h2,
+.readme-modal-body h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.5rem;
+}
+
+.readme-modal-body h1 {
+  font-size: 2rem;
+}
+
+.readme-modal-body h2 {
+  font-size: 1.5rem;
+}
+
+.readme-modal-body h3 {
+  font-size: 1.25rem;
+}
+
+.readme-modal-body p {
+  margin-bottom: 1rem;
+}
+
+.readme-modal-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.readme-modal-body a:hover {
+  text-decoration: underline;
+}
+
+.readme-modal-body code {
+  background: #f6f8fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  color: #e83e8c;
+}
+
+.readme-modal-body pre {
+  background: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.readme-modal-body pre code {
+  background: none;
+  color: #24292e;
+  padding: 0;
+}
+
+.readme-modal-body strong {
+  font-weight: 600;
+}
+
+.readme-modal-body em {
+  font-style: italic;
+}
+
+.primary-btn, .secondary-btn, button {
+  padding: 0.75rem 1.1rem;
+  border-radius: 0.5rem;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #007bff;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #0056b3;
+}
+
+.secondary-btn {
+  background: #f8f8f8;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.secondary-btn:hover {
+  background: #e7e7e7;
+}
+
+h1 { margin-top: 0; }
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: #ddd;
+  margin-top: auto;
+}
+form { display: grid; gap: 0.75rem; max-width: 600px; }
+label { font-weight: bold; }
+input, textarea { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+button { padding: 0.75rem 1rem; border: none; border-radius: 4px; background: #007bff; color: #fff; cursor: pointer; }
+button:hover { background: #0056b3; }
+#contato-status { margin-top: 1rem; font-weight: bold; }

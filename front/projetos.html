@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Projetos</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="projetos">
+      <h1>Projetos</h1>
+      <p>Henri Kim apresenta projetos desenvolvidos no terceiro ano do curso de Análise e Desenvolvimento de Sistemas (ADS). Conheça arquitetura de processadores, infraestrutura de servidores e desenvolvimento de sistemas operacionais.</p>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-badge">🔧 Arquitetura de Processadores</div>
+          <div class="github-preview" id="github-preview-1">
+            <!-- Prévia do GitHub será carregada aqui -->
+          </div>
+          <div class="project-links">
+            <button class="primary-btn" onclick="loadReadme('B0463', 'hkcpu')">Ver detalhes</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-badge">🏗️ Infraestrutura</div>
+          <div class="github-preview" id="github-preview-2">
+            <!-- Prévia do GitHub será carregada aqui -->
+          </div>
+          <div class="project-links">
+            <button class="primary-btn" onclick="loadReadme('B0463', 'SinasServerSystem')">Ver detalhes</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-badge">💻 Sistema Operacional</div>
+          <div class="github-preview" id="github-preview-3">
+            <!-- Prévia do GitHub será carregada aqui -->
+          </div>
+          <div class="project-links">
+            <button class="primary-btn" onclick="loadReadme('B0463', 'MondOS')">Ver detalhes</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal para README -->
+  <div id="readme-modal" class="readme-modal">
+    <div class="readme-modal-content">
+      <button class="readme-modal-close" onclick="closeReadme()">✕</button>
+      <div class="readme-modal-header" id="readme-modal-header"></div>
+      <div class="readme-modal-body" id="readme-modal-body">
+        <p>Carregando...</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 - 3DS PDS Portfolio</p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/github-preview.js" defer></script>
+  <script src="assets/js/readme-loader.js" defer></script>
+</body>
+</html>
